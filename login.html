@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Hot Seat</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    html, body {
+      background: #0d0d0d;
+      background-image: none;
+      color: #f2f1ee;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .login-wrap {
+      width: 100%;
+      max-width: 480px;
+      padding: 40px 24px;
+    }
+
+    .login-topline {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 48px;
+    }
+
+    .login-redbar {
+      width: 32px;
+      height: 3px;
+      background: #cc1100;
+      flex-shrink: 0;
+    }
+
+    .login-ref {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: rgba(255,255,255,0.25);
+      text-transform: uppercase;
+    }
+
+    .login-title {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 52px;
+      font-weight: 700;
+      letter-spacing: -2px;
+      line-height: 0.95;
+      color: #f2f1ee;
+      margin-bottom: 8px;
+    }
+
+    .login-title span { color: #cc1100; }
+
+    .login-subtitle {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: rgba(255,255,255,0.3);
+      text-transform: uppercase;
+      margin-bottom: 48px;
+      display: block;
+    }
+
+    .login-field-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: rgba(255,255,255,0.35);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .login-input-wrap {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      padding-bottom: 8px;
+      margin-bottom: 32px;
+      transition: border-color 0.2s;
+    }
+
+    .login-input-wrap:focus-within {
+      border-bottom-color: #cc1100;
+    }
+
+    .login-input {
+      background: transparent;
+      border: none;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 28px;
+      letter-spacing: 8px;
+      color: #f2f1ee;
+      padding: 4px 0;
+      width: 100%;
+      outline: none;
+      text-transform: uppercase;
+      caret-color: #cc1100;
+    }
+
+    .login-input::placeholder {
+      color: rgba(255,255,255,0.1);
+      letter-spacing: 4px;
+      font-size: 16px;
+    }
+
+    .blink {
+      display: inline-block;
+      width: 2px;
+      height: 28px;
+      background: #cc1100;
+      vertical-align: middle;
+      animation: blink 1s step-end infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .login-error {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: #cc1100;
+      margin-bottom: 20px;
+      display: none;
+      text-transform: uppercase;
+    }
+
+    .login-btn {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.5);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 3px;
+      padding: 14px 24px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-transform: uppercase;
+      width: 100%;
+    }
+
+    .login-btn:hover,
+    .login-btn.active {
+      border-color: #cc1100;
+      color: #cc1100;
+    }
+
+    .login-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    /* Welcome reveal screen */
+    .welcome-reveal {
+      display: none;
+      text-align: center;
+    }
+
+    .welcome-reveal-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 4px;
+      color: rgba(255,255,255,0.3);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .welcome-reveal-name {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #f2f1ee;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .welcome-reveal-sub {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: rgba(255,255,255,0.3);
+      text-transform: uppercase;
+      margin-bottom: 32px;
+      display: block;
+      animation: fadeInUp 0.6s ease 0.2s both;
+    }
+
+    .welcome-reveal-bar {
+      width: 40px;
+      height: 3px;
+      background: #cc1100;
+      margin: 0 auto 32px;
+      animation: expandBar 0.4s ease 0.1s both;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes expandBar {
+      from { width: 0; }
+      to { width: 40px; }
+    }
+
+    .ripple-credit {
+      position: fixed;
+      bottom: 20px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 8px;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,0.15);
+    }
+
+    .ripple-credit a { color: rgba(255,255,255,0.15); }
+    .ripple-credit a:hover { color: #cc1100; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<div class="login-wrap">
+
+  <!-- Login form -->
+  <div id="loginForm">
+    <div class="login-topline">
+      <div class="login-redbar"></div>
+      <div class="login-ref">Veritania Counter-Narrative Project &nbsp;·&nbsp; VNP-2025-04</div>
+    </div>
+
+    <div class="login-title">The<br><span>Hot</span><br><span>Seat.</span></div>
+    <span class="login-subtitle">Opposition Simulation Exercise</span>
+
+    <span class="login-field-label">// Enter session code</span>
+    <div class="login-input-wrap">
+      <input
+        class="login-input"
+        type="password"
+        id="codeInput"
+        placeholder="HOTXXXX"
+        maxlength="10"
+        autocomplete="off"
+        autofocus
+      />
+      <span class="blink"></span>
+    </div>
+
+    <div class="login-error" id="loginError">Incorrect code. Try again.</div>
+
+    <button class="login-btn" id="loginBtn">Enter</button>
+  </div>
+
+  <!-- Welcome reveal -->
+  <div class="welcome-reveal" id="welcomeReveal">
+    <span class="welcome-reveal-label">// Identity confirmed</span>
+    <div class="welcome-reveal-bar"></div>
+    <div class="welcome-reveal-name" id="revealName"></div>
+    <span class="welcome-reveal-sub">Proceeding to briefing...</span>
+  </div>
+
+</div>
+
+<div class="ripple-credit">
+  <a href="https://www.rippleresearch.ai" target="_blank">Ripple Research</a>
+</div>
+
+<script>
+  // ============================================================
+  // COMPANY NAMES
+  // ============================================================
+
+  const COMPANY_NAMES = [
+    "Suboptimal Outcomes Group",
+    "Acceptable Results Consulting",
+    "Managed Expectations Ltd.",
+    "Controlled Outcomes Partners",
+    "Necessary Compromises Advisory",
+    "Limited Liability Strategy",
+    "Calculated Risks Group",
+    "Partial Solutions Consulting",
+    "Constrained Outcomes Partners",
+    "Adequate Results Advisory",
+    "Strategic Tradeoffs Ltd.",
+    "Minimum Viable Policy",
+    "Tolerable Outcomes Group",
+    "Adjusted Expectations Consulting",
+    "Negotiated Realities Partners",
+    "Marginal Gains Advisory",
+    "Bounded Impact Group",
+    "Compliance First Consulting",
+    "Risk Containment Partners",
+    "Outcome Management Ltd.",
+  ];
+
+  // ============================================================
+  // SESSION CODE LOGIC
+  // ============================================================
+
+  function getTodayCode() {
+    const now = new Date();
+    const day   = String(now.getDate()).padStart(2, '0');
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    return 'HOT' + day + month;
+  }
+
+  const VALID_CODES = ['HOTTEST', getTodayCode()];
+
+  // ============================================================
+  // ASSIGN COMPANY NAME
+  // ============================================================
+
+  function pickCompanyName() {
+    // Shuffle and pick - uniqueness enforced on index.html via Google Sheets check
+    const shuffled = [...COMPANY_NAMES].sort(() => Math.random() - 0.5);
+    return shuffled[0];
+  }
+
+  // ============================================================
+  // LOGIN LOGIC
+  // ============================================================
+
+  const codeInput  = document.getElementById('codeInput');
+  const loginBtn   = document.getElementById('loginBtn');
+  const loginError = document.getElementById('loginError');
+
+  codeInput.addEventListener('input', () => {
+    loginError.style.display = 'none';
+    loginBtn.classList.toggle('active', codeInput.value.trim().length > 0);
+  });
+
+  codeInput.addEventListener('keydown', e => {
+    if (e.key === 'Enter') attempt();
+  });
+
+  loginBtn.addEventListener('click', attempt);
+
+  function attempt() {
+    const entered = codeInput.value.trim().toUpperCase();
+    if (VALID_CODES.includes(entered)) {
+      success(entered);
+    } else {
+      loginError.style.display = 'block';
+      codeInput.value = '';
+      codeInput.focus();
+    }
+  }
+
+  function success(sessionCode) {
+    const companyName = pickCompanyName();
+
+    // Save to localStorage
+    localStorage.setItem('hs_session', sessionCode);
+    localStorage.setItem('hs_group', companyName);
+    localStorage.removeItem('hs_audience');
+    localStorage.removeItem('hs_concern');
+    localStorage.removeItem('hs_exaggeration');
+    localStorage.removeItem('hs_blame');
+    localStorage.removeItem('hs_rationales');
+    localStorage.removeItem('hs_return_step');
+    localStorage.removeItem('hs_selections');
+
+    // Show welcome reveal
+    document.getElementById('loginForm').style.display = 'none';
+    document.getElementById('revealName').textContent = companyName;
+    document.getElementById('welcomeReveal').style.display = 'block';
+
+    // Navigate after 2.5s
+    setTimeout(() => {
+      window.location.href = 'index.html';
+    }, 2500);
+  }
+</script>
+
+</body>
+</html>
