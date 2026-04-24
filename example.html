@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Worked Example — The Hot Seat</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="page-wrap">
+
+  <div class="topbar">
+    <div class="topbar-red"></div>
+    <div class="topbar-label">Veritania Counter-Narrative Project &nbsp;·&nbsp; Workshop Module 04</div>
+    <div class="topbar-ref">VNP–2025–04</div>
+  </div>
+
+  <div class="main-grid" style="flex:1;">
+
+    <div class="sidebar">
+      <div class="sidebar-block">
+        <span class="sidebar-label">Your firm</span>
+        <div class="sidebar-value red" id="sidebarGroup">—</div>
+      </div>
+      <div class="sidebar-block">
+        <span class="sidebar-label">Exercise</span>
+        <div class="sidebar-value">The Hot Seat</div>
+      </div>
+      <hr class="sidebar-divider" />
+      <div class="sidebar-block">
+        <span class="sidebar-label">Country</span>
+        <div class="sidebar-value">Veritania (fictional)</div>
+      </div>
+      <div class="sidebar-block">
+        <span class="sidebar-label">Policy</span>
+        <div class="sidebar-value">Living Landscapes Act</div>
+      </div>
+      <hr class="sidebar-divider" />
+      <a href="info.html" class="sidebar-info-link">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <circle cx="6" cy="6" r="5.5" stroke="currentColor"/>
+          <path d="M6 5v4M6 3.5v.5" stroke="currentColor" stroke-linecap="round"/>
+        </svg>
+        Country background
+      </a>
+      <div class="step-tracker">
+        <div class="step-row done"><div class="step-dot done"></div>00 — Briefing</div>
+        <div class="step-row current"><div class="step-dot current"></div>Example</div>
+        <div class="step-row"><div class="step-dot"></div>01 — Audience</div>
+        <div class="step-row"><div class="step-dot"></div>02 — Concern</div>
+        <div class="step-row"><div class="step-dot"></div>03 — Escalate</div>
+        <div class="step-row"><div class="step-dot"></div>04 — Blame</div>
+        <div class="step-row"><div class="step-dot"></div>05 — Result</div>
+      </div>
+      <div class="sidebar-ripple">
+        <span class="sidebar-ripple-label">Developed by</span>
+        <div class="sidebar-ripple-name">Ripple Research</div>
+        <a href="https://www.rippleresearch.ai" target="_blank" class="sidebar-ripple-url">rippleresearch.ai</a>
+      </div>
+    </div>
+
+    <div class="main-content">
+
+      <div class="pill-tracker">
+        <span class="pill done">00 Briefing</span>
+        <span class="pill current">Example</span>
+        <span class="pill">01 Audience</span>
+        <span class="pill">02 Concern</span>
+        <span class="pill">03 Escalate</span>
+        <span class="pill">04 Blame</span>
+        <span class="pill">05 Result</span>
+      </div>
+
+      <span class="eyebrow">// Worked example — before you begin</span>
+      <h2 style="font-size:32px; letter-spacing:-1px; margin-bottom:4px;">How the formula works.</h2>
+      <p class="mb-24" style="color:#555;">Study this example carefully, then apply the same logic to your own chosen audience.</p>
+
+      <hr class="rule" />
+
+      <div class="brief-block mb-24">
+        <div class="brief-bar"></div>
+        <div>
+          <span class="field-label" style="margin-bottom:4px;">Target audience for this example</span>
+          <div style="font-size:22px; font-weight:700; letter-spacing:-0.5px; margin-bottom:8px;">Farmers and Landowners</div>
+          <p>Family farmers in Veritania who have worked the same land for generations. They are worried about their income, their independence, and rules that come from people who have never farmed. The Living Landscapes Act requires 15% of their land to be set aside — land that currently produces food and income.</p>
+        </div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:16px; margin-bottom:28px;">
+
+        <div class="card">
+          <div style="display:flex; align-items:baseline; gap:10px; margin-bottom:10px;">
+            <span style="font-family:'Share Tech Mono',monospace; font-size:9px; letter-spacing:3px; color:#cc1100;">STEP 01</span>
+            <span style="font-size:15px; font-weight:600; color:#111;">Identify a real concern</span>
+          </div>
+          <p style="font-size:15px; color:#333;">Start with something true. The Act really does require 15% of farmland to be taken out of production. That is a real, concrete impact on a farmer's livelihood.</p>
+          <div style="margin-top:12px; background:rgba(0,0,0,0.04); border-left:3px solid #cc1100; padding:12px 16px;">
+            <p style="font-size:15px; color:#111; font-style:italic; margin:0;">"The Living Landscapes Act will take 15% of productive farmland out of use permanently."</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div style="display:flex; align-items:baseline; gap:10px; margin-bottom:10px;">
+            <span style="font-family:'Share Tech Mono',monospace; font-size:9px; letter-spacing:3px; color:#cc1100;">STEP 02</span>
+            <span style="font-size:15px; font-weight:600; color:#111;">Make it bigger</span>
+          </div>
+          <p style="font-size:15px; color:#333;">Take the real concern and stretch it. Make the threat feel larger, permanent, and unavoidable. Add a number, make it irreversible, or show who else will be affected.</p>
+          <div style="margin-top:12px; background:rgba(0,0,0,0.04); border-left:3px solid #cc1100; padding:12px 16px;">
+            <p style="font-size:15px; color:#111; font-style:italic; margin:0;">"This Act will make family farming in Veritania extinct within a generation. Costs will force 30% of small farms to sell up within 5 years."</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div style="display:flex; align-items:baseline; gap:10px; margin-bottom:10px;">
+            <span style="font-family:'Share Tech Mono',monospace; font-size:9px; letter-spacing:3px; color:#cc1100;">STEP 03</span>
+            <span style="font-size:15px; font-weight:600; color:#111;">Assign blame</span>
+          </div>
+          <p style="font-size:15px; color:#333;">Choose someone to blame. The best target feels powerful, distant, and out of touch with your audience's daily life. Someone who benefits while others pay.</p>
+          <div style="margin-top:12px; background:rgba(0,0,0,0.04); border-left:3px solid #cc1100; padding:12px 16px;">
+            <p style="font-size:15px; color:#111; font-style:italic; margin:0;">"Bureaucrats and city-based environmental groups designed this law. Not one farmer was consulted."</p>
+          </div>
+        </div>
+
+      </div>
+
+      <hr class="rule-light" />
+      <span class="field-label">// The assembled message</span>
+      <div class="message-box">
+        "This Act will make family farming in Veritania extinct within a generation. Bureaucrats and city-based environmental groups designed this law behind closed doors. Not one farmer was consulted. This is not conservation. It is confiscation."
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin:20px 0;">
+        <div style="background:rgba(255,255,255,0.65); border:1px solid rgba(0,0,0,0.12); padding:14px;">
+          <span class="sidebar-label">Outcome reached</span>
+          <div style="font-size:14px; font-weight:600; color:#cc1100;">Identity Formation</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.65); border:1px solid rgba(0,0,0,0.12); padding:14px;">
+          <span class="sidebar-label">Estimated reach</span>
+          <div style="font-size:14px; font-weight:600;">~60,000 people</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.65); border:1px solid rgba(0,0,0,0.12); padding:14px;">
+          <span class="sidebar-label">Key technique</span>
+          <div style="font-size:14px; font-weight:600;">Elite vs. ordinary</div>
+        </div>
+      </div>
+
+      <div class="brief-block mt-16">
+        <div class="brief-bar"></div>
+        <p>Notice how the message starts with something <strong>real and specific</strong>, stretches it to something <strong>irreversible</strong>, and uses a villain that feels <strong>powerful and distant</strong>. Your group will now do the same — with a different audience.</p>
+      </div>
+
+      <div class="btn-row mt-24">
+        <button class="btn-primary" onclick="window.location.href='game.html'">Start the exercise</button>
+        <button class="btn-ghost" onclick="window.location.href='briefing.html'">Back</button>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    Simulation exercise developed by <a href="https://www.rippleresearch.ai" target="_blank">Ripple Research</a> &nbsp;·&nbsp; rippleresearch.ai
+  </footer>
+
+</div>
+
+<script>
+  const group = localStorage.getItem('hs_group');
+  const session = localStorage.getItem('hs_session');
+  if (!group || !session) window.location.href = 'index.html';
+  document.getElementById('sidebarGroup').textContent = group;
+</script>
+</body>
+</html>
